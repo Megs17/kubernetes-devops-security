@@ -30,17 +30,16 @@ pipeline {
     }
      }
 
-    stage('Kubernetes Deployment - DEV') {
+stage('Kubernetes Deployment - DEV') {
     steps {
         withKubeConfig([credentialsId: 'kubeconfig']) {
-            // Update image directly in the Deployment
-            sh "kubectl set image deployment/devsecops devsecops-container=megs17/numeric-app:${GIT_COMMIT}"
+            sed -i 's#replace#megs17/numeric-app:${GIT_COMMIT}#g' k8s_deployment_service.yaml
 
-            // (Optional) Wait for rollout to finish
-            sh "kubectl rollout status deployment/<deployment-name>"
+            sh "kubectl apply -f k8s_deployment_service.yaml"
         }
     }
 }
+
 
 
     
