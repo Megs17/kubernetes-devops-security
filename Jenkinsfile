@@ -32,19 +32,19 @@ pipeline {
         }
     }
     }
+    // this affect talisman as token is in the code
+    // stage('SonarQube Analysis') {
+    //         steps {
+    //                 sh """
 
-    stage('SonarQube Analysis') {
-            steps {
-                    sh """
-
-                        mvn clean verify sonar:sonar \
-                        -Dsonar.projectKey=devsecops2 \
-                        -Dsonar.projectName='devsecops2' \
-                        -Dsonar.host.url=http://51.103.114.71:9000 \
-                        -Dsonar.token=sqp_a892c7b8fac03013812cdf8506c6f3a799a93025
-                    """
-                }
-            }
+    //                     mvn clean verify sonar:sonar \
+    //                     -Dsonar.projectKey=devsecops2 \
+    //                     -Dsonar.projectName='devsecops2' \
+    //                     -Dsonar.host.url=http://51.103.114.71:9000 \
+    //                     -Dsonar.token=sqp_a892c7b8fac03013812cdf8506c6f3a799a93025
+    //                 """
+    //             }
+    //         }
 
 
 
